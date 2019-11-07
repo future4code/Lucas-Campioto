@@ -137,8 +137,11 @@ td button:hover {
     height: 100px;
 }
 
+
+
 .container-do-search img:hover {
     opacity: 30%;
+
 }
 
 .container-do-search img:active {
