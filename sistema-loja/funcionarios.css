@@ -1,0 +1,56 @@
+*{
+	margin:0;
+	padding:0;
+}
+
+a{
+	text-decoration: none;
+	margin:10px;
+	color: white;
+	background-color: #000080;
+	padding:5px;
+}
+
+.cabecalho{
+	padding:20px;
+	background-color: #000080;
+	font-weight: bold;
+	text-decoration: none;
+	text-align: center;
+
+}
+
+
+.cabecalho li{
+	display: inline-block;
+	margin:5px;
+	padding: 5px;
+	border:solid 2px white;	
+	
+}
+
+h2{
+	margin-top: 55px;
+	text-align: center;
+	font-size: 35px;	
+}
+
+.principal{
+	background-color: #00BFFF;
+	padding:100px 0px 400px 0px;
+}
+
+table{
+	text-align: center;
+	margin-left: 510px;
+	margin-top: 30px;
+	font-size: 20px;
+	padding: 10px;
+	border:solid 2px;
+	background-color: #4169E1;
+}
+
+.rodape{
+	padding:25px;
+	background-color: grey;
+}

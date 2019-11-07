@@ -1,0 +1,38 @@
+*{
+	padding: 0;
+	margin:0;
+}
+
+a{
+	text-decoration: none;
+	color: white;
+}
+
+.cabecalho{
+	padding:20px;
+	background-color: #000080;
+	font-weight: bold;
+	text-decoration: none;
+	text-align: center;
+
+}
+
+
+.cabecalho li{
+	display: inline-block;
+	margin:5px;
+	padding: 5px;
+	border:solid 2px white;	
+	
+}
+
+.principal{
+	padding: 250px 0px 250px 0px;
+	background-color: #00BFFF;
+	text-align: center;
+}
+
+.rodape{
+	padding:25px;
+	background-color: grey;
+}
