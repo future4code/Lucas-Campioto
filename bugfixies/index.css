@@ -129,7 +129,7 @@ td button {
 }
 
 td button:hover {
-    background-color: #c4ad31;
+    background-color: #fad52a;
 }
 
 .container-do-search {
@@ -158,6 +158,20 @@ td button:hover {
     color: black;
 }
 
+#back-button a{
+    text-decoration: none;
+    color: black;
+}
+#back-button a:active{
+    
+    color: white;
+}
+
 #back-button:hover {
-    background-color: #635a3d
+    background-color: #fad52a;
+    
+}
+
+#back-button:active {
+    color:white;
 }
