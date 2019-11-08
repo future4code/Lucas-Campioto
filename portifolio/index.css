@@ -1,0 +1,196 @@
+*{
+	margin:0;
+	padding: 0;
+	font-family: 'Roboto', sans-serif;
+}
+
+a{
+	text-decoration: none;
+}
+
+h2{
+	padding-top: 150px;
+	font-size: 45px;
+}
+
+.menu a{
+	color: white;
+	border: solid 1px #4169E1;
+	border-radius: 20px;
+	padding: 15px;
+}
+.menu{
+	background-color: #191970;
+	padding:20px;
+	font-weight: bold;
+	text-align: center;
+}
+
+.menu li{
+	display: inline-block;
+	margin:5px;
+	padding: 5px;
+}
+
+.sobre-mim{
+	background-color: #4169E1;
+	height: 500px;
+	text-align: center;
+}
+
+.sobre-mim p{
+	margin-top: 30px;
+	font-size: 20px;
+	color: white;
+}
+
+/*-------- section instituição ----------*/
+
+.instituicoes{
+	height: 400px;
+	text-align: center;
+
+}
+
+.instituicoes h3{
+	padding-top: 70px;
+	padding-bottom: 20px;
+	font-size: 30px;
+}
+
+.instituicoes h4{
+	padding-bottom: 10px;
+	padding-top: 10px;		
+	font-size: 20px;
+}
+
+.instituicoes li {
+	font-size: 20px;
+}
+
+
+
+
+/*-------- section projetos ----------*/
+
+.projetos{
+	height: 400px;
+	background-color: #ADD8E6;
+	text-align: center;
+}
+
+.projetos h3{
+	padding-top: 50px;
+	padding-bottom: 20px;
+	font-size: 30px;
+}
+
+.projetos img{
+	height: 200px;
+	width: 200px;
+	padding: 20px 70px 0px 70px;
+}
+
+.projetos img:hover{
+	opacity: 0.7;
+}
+
+/*-------- section habilidades ----------*/
+
+.habilidades{
+	background-color: #4169E1;
+	height: 400px;
+	text-align: center;	
+
+}
+
+.habilidades h3{
+	padding-top: 50px;
+	padding-bottom:50px;
+	font-size: 30px;
+	color:white;
+}
+
+.habilidades ul{
+	padding-top: 20px;
+	font-size: 20px;
+	
+}
+
+.habilidades li{
+	padding-bottom: 20px;
+	
+	
+}
+
+/*-------- section contato ----------*/
+
+.contato{
+	height: 400px;
+	text-align: center;	
+	padding-top: 50px;
+	font-size: 25px;
+}
+
+.contato h3{
+	padding-top: 20px;
+	padding-bottom: 20px;
+	font-size: 30px;
+}
+
+.form-pulaLinha{
+	display: block;
+	padding-bottom: 20px;
+}
+
+input{
+	border:solid 2px #4169E1;
+	border-radius: 10px;
+	height: 25px;
+	width: 500px;
+
+}
+
+#input-msg{
+	height: 100px;
+	width: 450px;
+}
+
+button{
+	background-color:#4169E1;
+	font-size: 20px; 
+	padding: 10px;
+	border:none;
+	border-radius: 20px;
+	width: 170px;
+	color: white;
+}
+
+button:hover{
+	background-color:white;
+	font-size: 20px; 
+	padding: 10px;
+	border:solid 2px #4169E1;
+	border-radius: 20px;
+	color: #4169E1;
+}
+
+/*-------- section redes sociais ----------*/
+
+.redes-sociais{
+	background-color: #191970;
+	color: white;
+	height: 150px;
+	text-align: center;	
+
+}
+
+.redes-sociais h3{
+	padding-top: 30px;
+	padding-bottom: 25px;
+}
+
+.redes-sociais li{
+	display: inline;
+	padding: 0px 10px 0px 10px;
+}
