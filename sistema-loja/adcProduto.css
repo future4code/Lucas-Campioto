@@ -1,0 +1,64 @@
+*{
+	margin:0;
+	padding:0;
+}
+
+.principal{
+	background-color: #00BFFF;
+	padding:100px 0px 400px 0px;
+}
+
+a{
+	text-decoration: none;
+	margin:10px;
+	color: white;
+	background-color: #000080;
+	padding:5px;
+}
+
+.cabecalho{
+	padding:20px;
+	background-color: #000080;
+	font-weight: bold;
+	text-decoration: none;
+	text-align: center;
+
+}
+
+.cabecalho li{
+	display: inline-block;
+	margin:5px;
+	padding: 5px;
+	border:solid 2px white;	
+	
+}
+
+h2{
+	text-align: center;
+	margin-top: 50px;
+	font-size: 30px;
+}
+
+form{
+text-align: center;
+color:#000080;
+font-weight: bold;
+font-size: 25px;
+}
+
+input{
+	padding: 5px;
+}
+
+button{
+	padding: 10px;
+	font-size: 10px;
+	background-color: #000080;
+	color: white;
+	border:none;
+}
+
+.rodape{
+	padding:25px;
+	background-color: grey;
+}
