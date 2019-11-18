@@ -145,6 +145,7 @@ h2{
 
 input{
 	border:solid 2px #4169E1;
+	margin-bottom: 30px;
 	border-radius: 10px;
 	height: 25px;
 	width: 500px;

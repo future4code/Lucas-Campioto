@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="index.css">
+	 <script src="index.js" defer></script>
+	 <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+</head>
+<body>
+<header>
+	<label>Adicione nova tarefa: </label>	
+	<input type="text" name="" id="novaTarefa">
+		<select name="diaDaSemana" id="diaDaSemana">
+		  <option value="segunda">Segunda-Feira</option>
+		  <option value="terca">Terça-Feira</option>
+		  <option value="quarta">Quarta-Feira</option>
+		  <option value="quinta">Quinta-Feira</option>
+		  <option value="sexta">Sexta-Feira</option>
+		  <option value="sabado">Sábado</option>
+		  <option value="domingo">Domingo</option>
+		</select>
+	<button onclick="adcTarefa(); limpaTexto();">Criar Tarefa!</button>
+</header>
+	<section>
+		<div id="segunda">
+			Segunda-Feira
+			<ol></ol>
+		</div>
+		<div id="terca">
+			Terça-Feira
+			<ol></ol>
+		</div>
+		<div id="quarta">
+			Quarta-Feira
+			<ol></ol>
+		</div>
+		<div id="quinta">
+			Quinta-Feira
+			<ol></ol>
+		</div>
+		<div id="sexta">
+			Sexta-Feira
+			<ol></ol>
+		</div>
+		<div id="sabado">
+			Sábado
+			<ol></ol>
+		</div>
+		<div id="domingo">
+			Domingo
+			<ol></ol>
+		</div>
+	</section>
+
+</body>
+</html>
