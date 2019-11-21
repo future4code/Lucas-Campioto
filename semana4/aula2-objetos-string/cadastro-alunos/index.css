@@ -1,0 +1,66 @@
+
+*{
+	font-family: 'Roboto', sans-serif;
+	
+	margin:0;
+	padding:0;
+}
+
+body{
+	background-color: #6A5ACD;
+}
+
+input{
+	width: 550px;
+	height: 30px;
+	border:solid 2px black;
+}
+
+button{
+	border:solid 2px black;
+	text-transform: uppercase;
+	background-color: #00FF00;
+	padding:10px;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+.principal{
+	margin-top: 30px;
+	text-align: center;
+	padding-bottom: 100px;
+	height: 200px;
+}
+
+.form{
+	margin-top: 20px;
+	margin-bottom: 5px;
+}
+.cadastros{
+	text-align: center;
+}
+
+#cadastros{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;	
+}
+
+.borda{
+	border:solid 1px white;
+	color: white;
+	padding:20px;
+	width: 350px;
+	margin-top: 10px;
+	margin-right: 15px;
+	margin-bottom: 15px;
+	text-align: center;
+}
+
+::-webkit-input-placeholder{
+    color:black;
+    font-weight: bold;
+   	padding-left: 10px;
+    text-transform: uppercase;
+    font-style: bold;
+}
