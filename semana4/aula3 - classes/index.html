@@ -8,20 +8,27 @@
 	<script src="index.js" defer></script>
 </head>
 <body>
-
+	<h1>Controlador de Despesas</h1>
 	<section class="principal">
-		<h2>Cadastrar post</h2>
+		<h2>Cadastrar despesas</h2>
 			<div class="form">
+				<label>Valor:</label>
 				<input type="text" placeholder="Titulo" id="titulo">
 			</div>
 
+			<select name="diaDaSemana" id="diaDaSemana">
+				  <option value="segunda">Casa</option>
+				  <option value="terca">Viagem</option>
+				  <option value="quarta">Lazer</option>
+			</select>
+
+			
 			<div class="form">
+				<label>Descrição</label>
 				<input type="text" placeholder="Autor" id="autor">
 			</div>	
 
-			<div class="form">
-				<textarea placeholder="Digite sua mensagem" id="mensagem"></textarea> 
-			</div>
+			
 			<button onclick="inserePost(); novaInstancia(); limpaCampos();">Cadastrar</button>	
 		
 	</section>
