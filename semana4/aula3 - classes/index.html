@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="index.css">
+	<script src="index.js" defer></script>
+</head>
+<body>
+
+	<section class="principal">
+		<h2>Cadastrar post</h2>
+			<div class="form">
+				<input type="text" placeholder="Titulo" id="titulo">
+			</div>
+
+			<div class="form">
+				<input type="text" placeholder="Autor" id="autor">
+			</div>	
+
+			<div class="form">
+				<textarea placeholder="Digite sua mensagem" id="mensagem"></textarea> 
+			</div>
+			<button onclick="inserePost(); novaInstancia(); limpaCampos();">Cadastrar</button>	
+		
+	</section>
+
+	<section class="secao-posts">
+		<h2>Posts</h2>
+		<div id="posts">
+
+		</div>
+	</section>
+
+</body>
+</html>
