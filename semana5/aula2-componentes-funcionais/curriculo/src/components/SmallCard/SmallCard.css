@@ -1,0 +1,24 @@
+.SmallCard{
+	border:solid 1px black;
+	width: 300px;
+	padding: 10px;
+	margin-bottom: 10px;
+
+}
+
+.SmallCard label{
+	margin-left: 15px;
+}
+
+
+
+p{
+	display: inline;
+	
+}
+
+img{
+	height: 30px;
+	width: 30px;
+	margin-left: 10px;
+}
