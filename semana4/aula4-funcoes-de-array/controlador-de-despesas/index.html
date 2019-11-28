@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="index.css">
+	<script src="index.js" defer></script>
+</head>
+<body>
+
+	<!-- ----------------------------------- -->
+	<section>
+		<div class="cadastroDespesas">
+		<h1>Controlador de Despesas</h1>
+			
+				<h2>Cadastrar despesas</h2>
+					<div class="form">
+						<label>Valor:</label>
+						<input type="number" placeholder="" id="valor">
+					</div>
+					
+					<label>Tipo (casa, viagem, Lazer)</label>
+					<select name="tipo" id="tipo">
+						  
+						  <option value="casa">Casa</option>
+						  <option value="viagem">Viagem</option>
+						  <option value="lazer">Lazer</option>
+					</select>
+
+					
+					<div class="form">
+						<label>Descrição: </label>
+						<input type="text" placeholder="" id="descricao">
+					</div>	
+
+					
+					<button onclick="validaCampos(); novaInstancia(); insereDespesas(); limpaCampos()">Cadastrar</button>
+				</div>
+				
+				<!-- ----------------------------------- -->	
+
+				<div class="despesasDetalhadas">
+					<h1>Desespesas Detalhadas</h1>
+					
+					
+					
+					<label>Tipo (casa, viagem, Lazer)</label>
+					<select name="diaDaSemana" id="tipoDetalhadas">
+						  
+						  <option value="casa">Casa</option>
+						  <option value="viagem">Viagem</option>
+						  <option value="lazer">Lazer</option>
+					</select>
+
+					<div class="form">
+						<label>Valor Minimo:</label>
+						<input type="text" placeholder="" id="valorMinimo">
+					</div>
+
+					
+					<div class="form">
+						<label>Valor Máximo: </label>
+						<input type="text" placeholder="" id="valorMaximo">
+					</div>	
+
+					
+					<button onclick="">Filtrar</button>
+					<button onclick="limpaCampos();">Limpar Filtros</button>
+			
+				</div>
+
+			
+				<!-- ----------------------------------- -->	
+
+				<h1>Extrato</h1>
+			</section>
+		
+	
+
+	<div class="lista-despesas">
+		<h2>Lista de despesas</h2>
+		<div id="listaDespesas">
+
+		</div>
+	</div>
+
+</body>
+</html>
