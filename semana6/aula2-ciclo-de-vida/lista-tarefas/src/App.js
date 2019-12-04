@@ -9,35 +9,13 @@ import Tarefa from './components/Tarefa/index'
 const ListaDeTarefas = Styled.ul`
   height:auto;
 `
-
-// const MainContainer = Styled.div`
-//     text-align:center;
-//     width:300px;
-//     margin-top: 30px;
-//     margin-bottom:50px;
-// `
-
-// const InputTarefa = Styled.input`
-// height:15px;
-// `
-
-// const BotaoTarefa = Styled.button`
-// height:20px;
-
-// margin-top:5px;
-// `
-
-// const SelectFiltro = Styled.select`
-// display:inline;
-// `
-
 class App extends React.Component {
   constructor(props){
     super(props);
     this.state ={
         inputTarefa: "",
         completa:false,
-        id: Date.now(),
+        tarefaId: Date.now(),
         arrayDeTarefas: [],
     }
   }
@@ -60,8 +38,9 @@ class App extends React.Component {
    
   }
 
- clicarNaTarefa = (props) =>{
-   console.log("clicou")
+ onClickTarefa = (tarefaClicada) => {
+   tarefaClicada = this.curtidoPorMim ? console.log("true"): console.log("false")
+  
  }
 
 
@@ -76,22 +55,13 @@ class App extends React.Component {
               onChange={this.controleTarefa}>
             </CadastroTarefa>
            
-            {/* <MainContainer>
-              <h3>Lista de Tarefas</h3>
-              <InputTarefa value={this.state.inputTarefa} onChange={this.controleTarefa }></InputTarefa>
-              <BotaoTarefa onClick={this.addTarefa}>Cadastrar</BotaoTarefa>
-              <p>Filtro</p>
-              <SelectFiltro>
-                <option value="Pendentes">Pendentes</option>
-                <option value="Completas">Completas</option>
-              </SelectFiltro>
-            </MainContainer> */}
+            
             
 
             <ListaDeTarefas>
               {this.state.arrayDeTarefas.map(element =>{
                 return(
-                  <Tarefa tarefaDigitada={element.tarefa}></Tarefa>
+                  <Tarefa onClickTarefa = {this.onClickTarefa} tarefaDigitada={element.tarefa}></Tarefa>
                 )
               } 
                 )}

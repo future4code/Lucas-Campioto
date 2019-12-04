@@ -2,17 +2,20 @@ import React from 'react';
 import Styled from 'styled-components';
 
 
-const Filtro = Styled.div`
-    display:inline;
-`
+
 const TarefaLista = Styled.li`
 
 `
+const TarefaListaRiscada = Styled.li`
+text-decoration: underline;
+`
 
 function Tarefa(props){
+   
     return(
+        
         <div>
-            <TarefaLista onClick={props.clicarNaTarefa}>{props.tarefaDigitada}</TarefaLista>
+            <TarefaLista onClick={props.onClickTarefa}>{props.tarefaDigitada}</TarefaLista>
         </div>
     )
 }
