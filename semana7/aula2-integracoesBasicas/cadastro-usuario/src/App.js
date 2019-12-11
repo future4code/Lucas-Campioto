@@ -1,18 +1,23 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import CadastroUsuario from './components/CadastroUsuario/index'
-import ListaDeUsuarios from './components/ListaDeUsuarios/index'
+import CadastroUsuario from './components/CadastroUsuario/index';
+import ListaDeUsuarios from './components/ListaDeUsuarios/index';
+import Styled from 'styled-components';
+import axios from 'axios';
 
+const Botao = Styled.button `
+border:none;
+border:solid 1px black;
+margin-top: 10px;
+padding: 5px;
+width:auto;
+background-color: #FF8C00;
+cursor:pointer;
+`
 
-const usuario = [
-  {
-    email: "l_campioto@hotmail.com",
-    nome: "Lucas Campioto"
-  }
-]
-
-
+const baseUrl = "https://us-central1-future4-users.cloudfunctions.net/api"
+const token = "campioto"
 
 
 class App extends React.Component {
@@ -20,44 +25,35 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      tela: "cadastro"
+      trocaPagina: "cadastro"
+      
     }
   }
 
-  clickPaginaCadastro = () => {
-    this.setState({tela: "cadastro" });
-  }
+  trocarDePagina = () =>{
+    if(this.state.trocaPagina === "cadastro"){
+      this.setState({ trocaPagina: "lsita" });
+    }else{
+      this.setState({ trocaPagina: "cadastro" })
+    }
+  };
 
-  clickPaginaLista = () => {
-    this.setState({tela: "lista" });
-  }
+ 
 
+ 
 
   render(){
-    let tela;
-      switch (this.state.tela){ 
-        case "cadastro":
-          tela =(
-            <CadastroUsuario onClick={this.clickPaginaLista}>
-
-            </CadastroUsuario>
-          );
-          break;
-
-          case "lista":
-            tela =(
-              <ListaDeUsuarios listaUsuarios={usuario} onClick={this.clickPaginaCadastro}>
-                
-              </ListaDeUsuarios>
-             
-            );
-            break;      
-    }
+    
+    const textoBotao = this.state.trocaPagina === "cadastro" ? "Ir para lista":"Ir para Cadastro";
+      
     return (
       
       <div className="App">
-        {tela}
+        <Botao onClick={this.trocarDePagina}><b>{textoBotao}</b></Botao>
+        {this.state.trocaPagina === "cadastro" ? <CadastroUsuario />: <ListaDeUsuarios />}
+        
       </div>
+     
     );
     
   }
