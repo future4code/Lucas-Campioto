@@ -1,8 +1,9 @@
-export const adicionarTarefa = novaTarefa => {
+
+export const adicionarTarefa = tarefa => {
     return {
         type:"CRIAR_TAREFA",
         payload:{
-            novaTarefa: novaTarefa
+            tarefa
         }
     }
 }

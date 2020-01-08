@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Tarefa from '../Tarefa/index';
 import { connect } from "react-redux";
+import { adicionarTarefa } from '../../actions/tarefa'
 
 const Container = styled.div`
 width:600px;
@@ -40,7 +41,7 @@ class Header extends React.Component{
 
         this.state = {
             textoInput: "",
-            novaTarefa:"",
+            
         }
     }
 
@@ -48,8 +49,11 @@ class Header extends React.Component{
         this.setState({ textoInput: e.target.value})
     }
 
-    novaTarefa = () =>{
-        this.setState({novaTarefa: this.state.textoInput});
+    onCreateTarefa = () =>{
+        const newTarefa = {
+            text: this.state.textoInput
+        }
+        this.props.novaTarefa(newTarefa)
     }
 
     render(){
@@ -57,22 +61,24 @@ class Header extends React.Component{
     return(
         <Container>
             <H1>4Task</H1>
-            <Input value={this.state.textoInput} onChange={this.onChangeTarefa} placeholder="O que tem que ser feito ?"></Input>
-            <button onClick={this.novaTarefa}>Testar</button>
-            <Tarefas>
-                <Tarefa></Tarefa>
-            </Tarefas>
+            <Input 
+            value={this.state.textoInput} 
+            onChange={this.onChangeTarefa} 
+            placeholder="O que tem que ser feito ?"
+            >
+            </Input>
+            <button>Enviar</button>
         </Container> 
          
     )
     }
 }
 
-const mapStateToProps = state => {
-    return {
-        listaTarefa: state.tarefas.listaTarefa
-    };
-  };
+const mapDispatchToProps = (dispatch) => ({
+    novaTarefa: (tarefa) => dispatch(adicionarTarefa(tarefa)),
+});
+   
 
 
-export default connect(mapStateToProps)(Header)
+
+export default connect(null, mapDispatchToProps)(Header)
