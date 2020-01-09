@@ -1,5 +1,7 @@
 const initialState = {
-    listaTarefa:[],
+    listaTarefa:[{
+        text: "Fazer Bolo"
+    }],
 };
 
 
@@ -7,6 +9,7 @@ const initialState = {
 const tarefas = (state = initialState, action) => {
     switch(action.type){
         case "CRIAR_TAREFA":
+            const novaTarefa = [ ...state.listaTarefa, action.payload.tarefa]
             return { ...state, listaTarefa: [...state.listaTarefa, action.payload.novaTarefa] }
         // case "DELETAR_TAREFA":
         //     return {...state, tarefaInicial: action.payload.novaTarefa}

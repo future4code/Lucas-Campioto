@@ -1,8 +1,8 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Header from './Componets/Header/index'
-
+import FormTarefa from './Componets/FormTarefa/index'
+import ListaTarefa from './Componets/ListaTarefa/index'
 import Tarefa from './Componets/Tarefa/index'
 import Filtros from './Componets/Filtros/index'
 import styled from 'styled-components';
@@ -19,8 +19,10 @@ function App() {
     <div className="App">
       <Provider store={store}>
         <Container>
-          <Header></Header>
-          
+          <FormTarefa />
+          <ListaTarefa>
+            <Tarefa></Tarefa>
+          </ListaTarefa>
           <Filtros></Filtros>
         </Container>
       </Provider>
