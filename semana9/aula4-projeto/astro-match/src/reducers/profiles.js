@@ -1,11 +1,11 @@
 const initialState = {
-  allProfiles: [],
+  currentProfile: null
 }
 
 const profiles = (state = initialState, action) => {
-  switch(action.types){
-    case "GET_PROFILE":
-      return { ...state , allProfiles: action.payload.profiles}
+  switch(action.type){
+    case "SET_PROFILE_TO_SWIPE":
+      return { ...state , currentProfile: action.payload.profile}
 
       default:
         return state;

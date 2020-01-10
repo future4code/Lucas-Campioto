@@ -29,7 +29,7 @@ class MatchScreen extends Component {
 					{matches && matches.map((match) => (
 						<ListItem key={match.name}>
 							<Avatar src={match.photo}/>
-							<ListText>{match.bio}</ListText>
+							<ListText>{match.name}</ListText>
 						</ListItem>
 					))}
 				</List>
@@ -45,7 +45,7 @@ MatchScreen.propTypes = {
 }
 
 const mapStateToProps = state => ({
-	profileList: state.profiles.allProfiles
+	
 })
 
 const mapDispatchToProps = dispatch => ({
