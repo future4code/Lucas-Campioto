@@ -1,5 +1,6 @@
 const initialState = {
-  currentProfile: null
+  currentProfile: null,
+  matches: [],
 }
 
 const profiles = (state = initialState, action) => {
@@ -7,6 +8,8 @@ const profiles = (state = initialState, action) => {
     case "SET_PROFILE_TO_SWIPE":
       return { ...state , currentProfile: action.payload.profile}
 
+      case "SET_MATCHES":
+        return { ...state, matches: action.payload.matches}
       default:
         return state;
 
