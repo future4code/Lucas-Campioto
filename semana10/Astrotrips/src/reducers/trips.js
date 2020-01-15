@@ -2,10 +2,11 @@ const initialState = {
     allTrips: [],
   }
   
-  const trips = (state = initialState, action) => {
+  const tripsReducer = (state = initialState, action) => {
     switch(action.type){
       case "SET_TRIPS":
-        return { ...state , trips: action.payload.trips}
+        const tripList =  action.payload.allTrips;
+        return { ...state, allTrips: tripList }
   
         default:
           return state;
@@ -14,4 +15,4 @@ const initialState = {
    
   }
 
-export default trips
+export default tripsReducer

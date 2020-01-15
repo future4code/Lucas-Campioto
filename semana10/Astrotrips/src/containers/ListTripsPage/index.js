@@ -3,11 +3,13 @@ import { connect } from "react-redux";
 import styled from "styled-components";
 import { push } from "connected-react-router";
 import { routes } from "../Router";
-import { getTrips } from "../../actions/trips"
+import { getTrips } from "../../actions/trips";
+import tripsReducer from "../../reducers/trips"
 
 const Container = styled.div`
 text-align:center;
-margin:50px auto;
+margin:100px auto;
+font-family: 'Roboto', sans-serif;
 `
 
 
@@ -19,14 +21,23 @@ class ListTripsPage extends React.Component {
         }
     }
 
-    
+    componentDidMount(){
+        if (localStorage.getItem("token") === null){
+         this.props.goToLoginPage()
+         window.alert("Área restrita. Faça seu login")
+        }
+        this.props.getTrips();
+     }
 
     render(){
-      
-        console.log("testando", this.props.getToTrips)
         return(
             <Container>
-                <li></li>
+                <h1>Lista de Viagens</h1>
+                    {this.props.getToTrips.map(trip=>(
+                        <p>{trip.name}</p>    
+                    ))}
+               
+                
             </Container>
             
         );
@@ -42,7 +53,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		getTrips: () => dispatch(getTrips()),	
+        getTrips: () => dispatch(getTrips()),
+        goToLoginPage: () => dispatch(push(routes.login)),	
 	}
 }
 

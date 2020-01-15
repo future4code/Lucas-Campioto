@@ -1,13 +1,13 @@
 import axios from 'axios';
 
-const setTrips = (trips) =>({
+const setTrips = (allTrips) =>({
     type: "SET_TRIPS",
     payload: {
-        trips,
+        allTrips,
     }
 })
 
-export const getTrips = () => async (dispatch) =>{
+export const getTrips = () => async (dispatch,getState) =>{
     const response = await axios.get("https://us-central1-missao-newton.cloudfunctions.net/futureX/lucas/trips")
     dispatch(setTrips(response.data.trips));
 }
