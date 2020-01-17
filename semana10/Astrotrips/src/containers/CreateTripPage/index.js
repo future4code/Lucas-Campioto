@@ -3,15 +3,15 @@ import styled from "styled-components";
 import { connect } from "react-redux";
 import { push } from "connected-react-router";
 import { routes } from "../Router";
-import { login } from '../../actions/login'
+import { createTrip } from "../../actions/trips"
 
-const loginForm = [
+const createTripForm = [
   {
-    name: "username",
+    name: "name",
     type: "text",
     label: "Nome",
     required: true,
-    pattern: "{A-Za-z}{5,}",
+
   },
   {
     name: "date",
@@ -27,7 +27,7 @@ const loginForm = [
     pattern:"[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]{30,}",
   },
   {
-    name: "durationDays",
+    name: "durationInDays",
     type: "number",
     label: "Duração da Viagem",
     required: true,
@@ -60,12 +60,17 @@ class CreateTrip extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      form: {} 
+      form: {},
+      value: "",
+      
     };
   }
 
+  onHandleChangePlanet = (event) => {  
+    this.setState({ value: event.target.value })
+  }
+
   handleInputChange = event => {
-   
     const { name, value } = event.target; 
     this.setState({ form: { ...this.state.form, [name]: value } });
   };
@@ -73,7 +78,6 @@ class CreateTrip extends Component {
   handleOnSubmit = event => {
     
     event.preventDefault();
-    console.log(this.state.form);
    
   };
 
@@ -83,14 +87,23 @@ class CreateTrip extends Component {
      window.alert("Área restrita. Faça seu login")
     }
  }
-
+ handleCreateTrip = () => {
+      const { name, date, description, durationInDays } = this.state.form
+      const planet = this.state.value
+      
+      this.props.createTrip(name, date, description, durationInDays, planet)
+      console.log("testando form", this.props.createTrip)
+      
+}
+  
   render() {
+    
     return (
       <Container >
         <h2>Criar nova Viagem</h2>
       <form onSubmit={this.handleOnSubmit}>
        
-        {loginForm.map(input => (
+        {createTripForm.map(input => (
           <div key={input.name}>
             <label htmlFor={input.name}>{input.label}: </label>
             <Input
@@ -105,7 +118,7 @@ class CreateTrip extends Component {
           </div>
         ))}
         <label>Escolha o planeta: </label>
-        <select name="paises" id="paises">
+        <select onChange={this.onHandleChangePlanet} name="planet" id="paises" value={this.state.value} >
 	        <option value="Mercurio" selected="selected">Mercurio</option> 
             <option value="Venus" selected="selected">Vênus</option> 
             <option value="Terra" selected="selected">Terra</option> 
@@ -116,19 +129,24 @@ class CreateTrip extends Component {
             <option value="Netuno" selected="selected">Netuno</option>    
         </select>
         <div>
-            <Botao type="submit">Enviar</Botao>
+            <Botao onClick={this.handleCreateTrip} type="submit">Enviar</Botao>
         </div>
       </form>
       </Container>
     );
+    
   }
+  
 }
 
 function mapDispatchToProps(dispatch) {
-  return { 
-      goToLoginPage: () => dispatch(push(routes.login)),           
-  }    
   
+  return { 
+      goToLoginPage: () => dispatch(push(routes.login)),  
+      createTrip: (name,date,description,durationInDays,planet) => dispatch(createTrip(name,date,description,durationInDays,planet)),
+      
+    }    
+   
 }
 
 export default connect(null, mapDispatchToProps)(CreateTrip);

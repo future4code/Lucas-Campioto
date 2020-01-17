@@ -8,6 +8,7 @@ import { login } from '../../actions/login'
 const Container = styled.div`
 text-align:center;
 margin: 100px auto;
+font-family: 'Roboto', sans-serif;
 `
 
 class TripDetails extends Component {
@@ -28,7 +29,7 @@ class TripDetails extends Component {
   
     render() {
       return (
-        <Container >
+        <Container>
           <h2>Detalhes das Viagens</h2>
         </Container>
       );
