@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test component Posts renders correctly 1`] = `
+<div
+  className="sc-fzXfNl AZUci"
+>
+  <div
+    className="MuiPaper-root MuiCard-root MuiPaper-elevation1 MuiPaper-rounded"
+  >
+    <div
+      className="MuiCardContent-root"
+    >
+      <h5
+        className="MuiTypography-root MuiTypography-h5 MuiTypography-gutterBottom"
+      />
+      <hr />
+      <p
+        className="MuiTypography-root MuiTypography-body1"
+      />
+      <hr />
+    </div>
+    <div
+      className="MuiCardActions-root MuiCardActions-spacing"
+    >
+      <div
+        className="sc-fzXfNJ dICJtc"
+      >
+        <span
+          className="sc-fzXfNL eBJIlm"
+        >
+          ⬆
+        </span>
+        <span />
+        <span
+          className="sc-fzXfNM lfOqWa"
+        >
+          ⬇
+        </span>
+      </div>
+      <div>
+        <span>
+          comentários
+        </span>
+        <span
+          className="sc-fzXfNK bQWMbO"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
