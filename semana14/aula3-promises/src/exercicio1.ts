@@ -3,7 +3,7 @@ import { readFile, readdir, writeFile } from 'fs';
 const path:string = "../textos"
 
 
-const readAllFilesFolder = new Promise((resolve, reject) => {
+const lendoArquivosTexto = new Promise((resolve, reject) => {
     readdir(path, (err: Error, folder: string[]) => {
         folder.forEach( file => {   
             readFile(`${path}/${file}`, (err: Error, data: Buffer) => {
@@ -22,10 +22,10 @@ const readAllFilesFolder = new Promise((resolve, reject) => {
 
 const init = async () => { 
     try{
-        const allContent = await readAllFilesFolder;
-        console.log(allContent)
+        const todosOsTextos = await lendoArquivosTexto;
+        console.log(todosOsTextos)
     } catch(error){
-        console.error("Promisse Falhou", error)
+        console.error("Erro nas promises", error)
     }
 }
 
