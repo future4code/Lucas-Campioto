@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`teste componente PlannerTasks renders correctly 1`] = `
+<div
+  className="sc-bdVaJa eIffcY"
+>
+  <div>
+    <div>
+      <h3>
+        Segunda
+      </h3>
+    </div>
+  </div>
+  <div>
+    <div>
+      <h3>
+        Terça
+      </h3>
+    </div>
+  </div>
+  <div>
+    <div>
+      <h3>
+        Quarta
+      </h3>
+    </div>
+  </div>
+  <div>
+    <div>
+      <h3>
+        Quinta
+      </h3>
+    </div>
+  </div>
+  <div>
+    <div>
+      <h3>
+        Sexta
+      </h3>
+    </div>
+  </div>
+  <div>
+    <div>
+      <h3>
+        Sabádo
+      </h3>
+    </div>
+  </div>
+  <div>
+    <div>
+      <h3>
+        Domingo
+      </h3>
+    </div>
+  </div>
+</div>
+`;
