@@ -1,0 +1,16 @@
+{
+  "name": "exercicio1",
+  "version": "1.0.0",
+  "description": "pacote exercicio",
+  "main": "exercicio1.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node exercicio1.js"
+  },
+  "keywords": [
+    "pacote",
+    "exercicio1"
+  ],
+  "author": "Lucas Campioto",
+  "license": "ISC"
+}
