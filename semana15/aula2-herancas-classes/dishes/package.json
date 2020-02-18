@@ -1,0 +1,12 @@
+{
+  "name": "dishes",
+  "version": "1.0.0",
+  "description": "projeto tarde",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "tsc && node dish.js 2 --target es6"
+  },
+  "author": "lucas",
+  "license": "ISC"
+}
