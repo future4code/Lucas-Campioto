@@ -1,6 +1,6 @@
 import { PostCreator } from "./PostCreator";
 import { Post } from './Post'
-import{ JSONFileManager } from './JSONFileManager'
+import { JSONFileManager } from './JSONFileManager'
 
 export class NormalPostCreator implements PostCreator{
      create(author:string, text:string){
