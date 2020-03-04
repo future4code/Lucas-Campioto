@@ -1,0 +1,30 @@
+EXERCICIO 1 QUERIES
+
+
+A) select * from city order by population  desc limit 5
+
+B) select district,avg(population)  from city group by district
+
+C) select district, count(name) from city group by district
+
+D) select CountryCode, count(name) from city group by CountryCode order by count(name) desc limit 10
+
+EXERCICIO 2 QUERIES
+
+A) select name,population from country where Population>=100000 limit 100
+
+B) select count(*) from country where Population>=5000000
+
+C) select continent, sum(population) from country where continent = 'asia'
+
+D) select count(*), GovernmentForm from country where GovernmentForm Like "%Republic%" OR GovernmentForm like "%Monarchy%" group by GovernmentForm;
+
+E) select count(*), GovernmentForm from country group by GovernmentForm order by count(*) Desc limit 1;
+
+F) select avg(population), continent from country group by continent;
+
+G) select Name, indepYear from country order by indepYear DESC limit 10;
+
+H) select avg(LifeExpectancy), lower(Continent) from country group by Continent;
+
+I) select continent, SurfaceArea  from country order by SurfaceArea DESC limit 3;
