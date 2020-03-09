@@ -1,6 +1,7 @@
 import knex from "knex";
 import { User } from "../business/entities/user";
 
+// conectando com o banco
 export class UserDB {
   private connection = knex({
     client: "mysql",
