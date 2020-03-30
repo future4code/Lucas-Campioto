@@ -1,0 +1,31 @@
+1- Antes de começar, pense o que você precisaria fazer para que isso acontecesse. Explique sucintamente seu raciocínio comparando com o que fizemos em aula.
+
+RESPOSTA: Acessar minha máquina virtual. Instalar as dependencias, e subir o projeto.
+
+2- Escolha algum projeto de React que você fez em grupo nos módulos anteriores e verifique se ele está rodando em sua máquina. Caso encontre algum erro, procure outro projeto que esteja funcionando (não perca tempo arrumando bugs de React agora!)
+
+3- Acesse a máquina da EC2 utilizando a chave ssh que criamos durante a aula. Qual o comando que você utilizou?
+
+RESPOSTA: ssh -i ec2-criada-para-a-semana.pem ubuntu@54.166.197.10
+
+4- Clone o repositório do seu projeto na máquina. Acesse-o através dos comandos dos terminais. Rode o projeto e escreva todos os comandos que você precisou utilizar nessa etapa explicando a necessidade de cada um.
+
+RESPOSTA: primeiro comando para clonar: git clone https://github.com/future4code/4eddit-bouman-6
+segundo comando para entrar na pasta do projeto: cd 4eddit-bouman-6
+terceiro comando para acessar a outra pasta: cd 4eddit-boilerplate
+quarto comando instalando as dependencias: npm install
+quinto comando rodando o projeto: npm start
+
+5- Lembre-se de garantir que a porta esteja devidamente configurada para poder acessá-la e teste o seu deploy.
+
+6- Lembre-se de garantir que a porta esteja devidamente configurada para poder acessá-la e teste o seu deploy. 
+
+RESPOSTA: npm run build , cd build , sudo python -mSimpleHTTPServer 80   
+
+7 - Lembre-se de garantir que a porta esteja devidamente configurada para poder acessá-la e teste o seu deploy. 
+
+RESPOSTA: Fluxo bem parecido com o da aula, única coisa diferente foi o comando para clonar um repositório do git.
+
+Exercício 2
+
+RESPOSTA: Achei o tutorial tranquilo não tem muito segredo.            
