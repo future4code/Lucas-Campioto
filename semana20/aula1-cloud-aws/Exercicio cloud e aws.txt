@@ -20,7 +20,7 @@ quinto comando rodando o projeto: npm start
 
 6- Lembre-se de garantir que a porta esteja devidamente configurada para poder acessá-la e teste o seu deploy. 
 
-RESPOSTA: npm run build , cd build , sudo python -mSimpleHTTPServer 80   
+RESPOSTA: npm run build , cd build , sudo python -mSimpleHTTPServer 80.  
 
 7 - Lembre-se de garantir que a porta esteja devidamente configurada para poder acessá-la e teste o seu deploy. 
 
