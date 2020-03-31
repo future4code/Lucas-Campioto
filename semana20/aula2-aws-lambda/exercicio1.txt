@@ -1,0 +1,28 @@
+1a) - RESPOSTA: Eu entendi o código.
+
+b) - RESPOSTA: status 400, "Missing input"
+
+c) - RESPOSTA: status 400,"Missing input"
+
+d) - RESPOSTA: status 400, "Missing email"
+
+e) - RESPOSTA: status 400, "Invalid password"
+
+f) - RESPOSTA: status 200, "User is correct"
+
+g) - RESPOSTA: nessa parte do código: if (!user.email) {
+    return {
+      statusCode: 400,
+      body: JSON.stringify({ message: "Missing email" })
+    };
+  }
+
+h) - RESPOSTA: {
+  "user": {
+		"info": {
+			"name": "Astrodev",
+			"email": "astrodev@f4.com.br",
+			"password": "123456"
+		}
+  }
+}
