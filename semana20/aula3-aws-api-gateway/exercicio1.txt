@@ -1,0 +1,28 @@
+tarefa1 ) - RESPOSTA: feito
+
+tarefa2 A) - RESPOSTA: "Missing input!" , status 400 com a mensagem de erro e um status 200 com as informações.
+
+B) - RESPOSTA: Por que o body e uma string e precisamos converter.
+
+C) - RESPOSTA: A lambda em questão retorna um statusCode 200 caso o parêmetro event possua corpo ou query string. 
+
+D) - RESPOSTA: Quando não for passado nada no body e nem nas queries ai ele retorna essa mensagem.
+
+E) - RESPOSTA: 
+
+tarefa3 ) - exports.handler = async (event) => {
+    
+    const cep = event.queryStringParameters.cep
+    
+    if (cep.length >= 8 && cep.includes('-')){
+        return {
+            statusCode: 200,
+            body: JSON.stringify(true),
+        };
+    } else {
+         return {
+            statusCode: 200,
+            body: JSON.stringify(false),
+        };
+    }
+    
