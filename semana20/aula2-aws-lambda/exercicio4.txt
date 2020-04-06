@@ -1,0 +1,31 @@
+RESPOSTA:
+
+exports.handler = async event => {
+	let email
+	let isEmail
+	let reason
+	
+	if(event.email.includes("@") && event.email.includes(".")){
+	    event.isEmail = true
+		return {
+			statusCode:200,
+			body: JSON.stringify(`isEmail: ${event.isEmail}`)
+            }
+	} if(!event.email.includes("@")) {
+      event.isEmail = false
+      event.reason = "Não possui @ "
+      return {
+            statusCode:400,
+            body: JSON.stringify(`isEmail: ${event.isEmail}, reason: ${event.reason}`)
+                }
+	    
+	} if(!event.email.includes(".")) {
+	    event.isEmail = false
+        event.reason = "Não possui '.' "
+        return {
+            statusCode:400,
+            body: JSON.stringify(`isEmail: ${event.isEmail}, reason: ${event.reason}`)
+                }
+	}
+            
+	}

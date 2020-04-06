@@ -1,0 +1,19 @@
+RESPOSTA: 
+
+exports.handler = async (event) => {
+const response = {
+statusCode: 200,
+            
+body: JSON.stringify(myFunc()),
+ };
+        
+return response;
+    
+};
+
+function myFunc(num1,num2) 
+{
+	
+return 1+1
+
+}
