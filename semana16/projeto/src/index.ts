@@ -1,6 +1,6 @@
   
 import express, { Request, Response } from "express";
-import { AddressInfo } from 'net'
+import { AddressInfo } from 'net';
 import knex from 'knex';
 
 const app = express();
@@ -15,3 +15,8 @@ const connection = knex({
       database : 'bouman-lucas'
     }
   });
+
+  app.get('/', (req: Request, res: Response) => {
+      
+      
+  })
