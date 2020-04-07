@@ -15,6 +15,7 @@ import { createBrowserHistory } from "history";
 import { createStore, applyMiddleware, compose } from "redux";
 import { generateReducers } from "../../reducers/index";
 import { routerMiddleware } from "connected-react-router";
+import * as firebase from "firebase/app";
 
 const generateClassName = createGenerateClassName();
 const jss = create({
@@ -33,6 +34,18 @@ const middlewares = [
 ];
 
 const store = createStore(generateReducers(history), compose(...middlewares));
+
+var firebaseConfig = {
+  apiKey: "AIzaSyAzSE7txxxYpI-GhUk_5z8i06XXNdl8zqQ",
+  authDomain: "futuretube-projeto.firebaseapp.com",
+  databaseURL: "https://futuretube-projeto.firebaseio.com",
+  projectId: "futuretube-projeto",
+  storageBucket: "futuretube-projeto.appspot.com",
+  messagingSenderId: "111231734594",
+  appId: "1:111231734594:web:81e59b86224ddf47f9eedb"
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
 
 export const App = () => (
   <Provider store={store}>
