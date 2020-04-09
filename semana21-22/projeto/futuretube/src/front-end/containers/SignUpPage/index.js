@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import styled from 'styled-components';
 import TextField from "@material-ui/core/TextField";
 import Ilustracao from '../../../img/ilustracao.png';
-import '../../containers/LoginPage/index.css'
+import '../../style/index.css'
 import LogoFuture from '../../../img/future.png';
 
 const CadastroForm = [
@@ -27,7 +27,7 @@ const CadastroForm = [
         pattern: "[A-Za-^([a-zA-Z0-9_-.]+)@([a-zA-Z0-9_-.]+).([a-zA-Z]{2,5})$]{3,}",
         variant: "outlined",
     },
-     {
+    {
         name: 'password',
         type: 'password',
         label: 'Senha',
@@ -36,22 +36,30 @@ const CadastroForm = [
         variant: "outlined",
     },
     {
-        name: 'confirmPassword',
-        type: 'password',
-        label: 'Confirmar',
-        placeholder: 'Confirme a senha anterior',
+        name: 'dateOfBirth',
+        type: 'text',
+        label: 'Data de nascimento',
+        placeholder: '00/00/0000',
         required: true,
         variant: "outlined",
     },
+    {
+        name: 'photo',
+        type: 'text',
+        label: 'Foto',
+        placeholder: 'Coloque aqui sua foto',
+        required: true,
+        variant: "outlined",
+     },
+    
 ]
 
-export const ContainerSignUp = styled.div`
+ const ContainerSignUp = styled.div`
     font-family: 'Roboto', sans-serif;
     background-color: #e8c2ff;
     min-height: 100vh;
 `
-
-export const SignupWrapper = styled.form`
+ const SignupWrapper = styled.form`
   width: 100%;
   height: 100vh;
   gap: 10px;
@@ -62,7 +70,7 @@ export const SignupWrapper = styled.form`
   
 `;
 
-export const TextFiled = styled(TextField)`
+const TextFiled = styled(TextField)`
     background-color:transparent;
     text-align:center;
     width:300px;
@@ -134,7 +142,7 @@ export class SignUp extends React.Component{
                             variant={input.variant}
                         />
                     ))}
-                    <div class="container">
+                        <div class="container">
                             <a onClick={this.goToLoginPage} class="btn btn-2" type="submit">Cadastrar</a>
                         </div>
                 </SignupWrapper>

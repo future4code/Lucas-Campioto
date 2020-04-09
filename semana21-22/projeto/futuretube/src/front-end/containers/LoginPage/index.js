@@ -15,7 +15,6 @@ const ContainerLogin = styled.div`
     align-items:center;
     margin: auto;
     background-color: #ccd9ff;
-    font-family: 'Roboto', sans-serif;
     min-height: 100vh;
 `
 
