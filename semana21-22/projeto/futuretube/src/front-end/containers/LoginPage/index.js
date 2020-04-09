@@ -1,10 +1,12 @@
 import React from 'react';
+import { push } from "connected-react-router";
+import { routes } from "../Router/index";
+import { connect } from "react-redux";
 import styled from 'styled-components';
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
-import './index.css';
 import LogoFuture from '../../../img/future.png';
-import Ilustracao from '../../../img/ilustracao.png';
+import Passaro from '../../../img/passaro.png';
 
 const ContainerLogin = styled.div`
     display:flex;
@@ -12,13 +14,12 @@ const ContainerLogin = styled.div`
     flex-direction: column;
     align-items:center;
     margin: auto;
-    background-color: #92e2fd;
-    font-family: 'Roboto', sans-serif;
+    background-color: #ccd9ff;
+    min-height: 100vh;
 `
 
 const TextLoginPage = styled.h1`
     color:black;
-
 `
 
 const ContainerTextField = styled.div`
@@ -42,12 +43,14 @@ const LoginButton = styled(Button)`
 const SignUpButon = styled.span`
     font-weight:bold;
     cursor:pointer;
+    margin-top:8px;
 `
 
 const ImageLogo = styled.img`
     width:350px;
     height:350px;
     margin-left:30px;
+    margin-top:-150px;
 `
 
 
@@ -58,11 +61,11 @@ const ContainerLogo = styled.div`
     align-items:center;
     margin-top: -20px;
     margin-bottom:-50px;
-    background-color: #92e2fd;
+    
 `
 const ContainerIllustration = styled.div`
     margin-bottom:-50px;
-    margin-right:-70px;
+    margin-right:0px;
     background-color: #92e2fd;
 `
 const ImageIllustration = styled.img`
@@ -95,6 +98,7 @@ export class LoginPage extends React.Component{
     }
 
     render(){
+        const { goToSignUpPage } = this.props
         return(
         
                 <ContainerLogin>
@@ -103,7 +107,7 @@ export class LoginPage extends React.Component{
                     </ContainerLogo>
 
                     <ContainerIllustration>
-                        <ImageIllustration src={Ilustracao} />
+                        <ImageIllustration src={Passaro} />
                     </ContainerIllustration>
                     
                     <TextLoginPage>
@@ -134,7 +138,8 @@ export class LoginPage extends React.Component{
                         <div class="container">
                             <a class="btn btn-2">Logar</a>
                         </div>
-                        <span >Não possui Cadastro? <SignUpButon>Clique aqui </SignUpButon></span> 
+                        <span >Não possui Cadastro?</span>
+                        <SignUpButon onClick={goToSignUpPage}>Clique aqui</SignUpButon>  
                     
                     
                 </ContainerLogin>
@@ -142,4 +147,14 @@ export class LoginPage extends React.Component{
         )
     }
 }
+
+
+const mapDispatchToProps = dispatch => ({
+    goToSignUpPage: () => dispatch(push(routes.signUpPage)),
+})
+
+export default connect(
+    null,
+    mapDispatchToProps
+)(LoginPage);
 
