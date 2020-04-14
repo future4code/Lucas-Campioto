@@ -7,10 +7,13 @@ import TextField from "@material-ui/core/TextField";
 import Ilustracao from '../../../img/ilustracao.png';
 import '../../style/index.css'
 import LogoFuture from '../../../img/future.png';
+import * as firebase from "firebase/app";
+import "firebase/auth"
+import "firebase/firestore"
 
 const CadastroForm = [
     {
-        name: 'name',
+        name: 'username',
         type: 'text',
         label: 'Nome ',
         placeholder: 'Nome e Sobrenome',
@@ -104,7 +107,13 @@ export class SignUp extends React.Component{
         super(props);
 
         this.state = {
-            form:{}
+            form:{},
+            username:'',
+            email:'',
+            password:'',
+            dateOfBirth:'',
+            photo:'',
+
         }
     }
 
@@ -114,11 +123,29 @@ export class SignUp extends React.Component{
         })
     }
 
-    handleSubmit = (event) => {
-        event.preventDefault();
-        const { name, email,password } = this.state
-        this.props.signup(name, email, password)
-    }
+    onInputChange = (e) => {
+        this.setState({[e.target.name]: e.target.value})
+      };
+    
+    onSubmitSignUp = async (e) => {
+        e.preventDefault();
+        try{
+          await firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
+          .then(userCredential => {
+            const user = userCredential.user;
+          firebase.firestore().collection('users').doc(user.uid).set({
+            username: this.state.username,
+            email:this.state.email,
+            password: this.state.password,
+            dateOfBirth: this.state.dateOfBirth,
+            photo: this.state.photo
+          })
+          });
+
+        }catch(e) {
+          console.log(e.message)
+        }
+      };
 
     render(){
         return(
@@ -143,7 +170,7 @@ export class SignUp extends React.Component{
                         />
                     ))}
                         <div class="container">
-                            <a onClick={this.goToLoginPage} class="btn btn-2" type="submit">Cadastrar</a>
+                            <a onClick={this.onSubmitSignUp} class="btn btn-2" type="submit">Cadastrar</a>
                         </div>
                 </SignupWrapper>
             </ContainerSignUp>
@@ -153,6 +180,7 @@ export class SignUp extends React.Component{
 
 const mapDispatchToProps = dispatch => ({
     goToLoginPage: () => dispatch(push(routes.loginPage)),
+    
 })
 
 export default connect(

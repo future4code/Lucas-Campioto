@@ -1,4 +1,7 @@
 import React from 'react';
+import { push } from "connected-react-router";
+import { routes } from "../../containers/Router/index";
+import { connect } from "react-redux";
 import styled from 'styled-components';
 import LogoFuture from '../../../img/future.png';
 import Icon from '@material-ui/core/Icon';
@@ -28,7 +31,7 @@ const ContainerLogo = styled.div`
     display:flex;
     justify-content:left;
     flex-direction: row;
-    
+    cursor:pointer;
 `
 const Items =  styled.p`
     font-size:17px;
@@ -54,25 +57,41 @@ const ContainerAvatar = styled.div`
 `
 
 
-function Header(props){
-    return(
-        <ContainerHeader>
-            <ContainerLogo>
-                <ImageLogo src={LogoFuture} />
-            </ContainerLogo>
+export class Header extends React.Component{
+    constructor(props){
+        super(props)
 
+        
+    }
+
+    render(){
+        return(
+            <ContainerHeader>
+                <ContainerLogo onClick={this.props.goToLoginPage}>
+                    <ImageLogo src={LogoFuture} />
+                </ContainerLogo>
+
+                
+                <ItemsHeader>
+                    <Items onClick={this.props.goToSendVideo}> <PublishIcon/> </Items>
+                    <Items> <ExitToAppIcon /> </Items>
+                </ItemsHeader>
+                <ContainerAvatar>
+                        <Avatar alt="Usuário" src="https://spinoff.com.br/wp-content/uploads/homem-de-ferro-1216-1400x800.jpg" />
+                </ContainerAvatar>
             
-            <ItemsHeader>
-                <Items> <PublishIcon/> </Items>
-                <Items> <ExitToAppIcon /> </Items>
-            </ItemsHeader>
-            <ContainerAvatar>
-                    <Avatar alt="Usuário" src="https://spinoff.com.br/wp-content/uploads/homem-de-ferro-1216-1400x800.jpg" />
-            </ContainerAvatar>
-           
-            
-        </ContainerHeader>
-    )
+                
+            </ContainerHeader>
+        )
+    }
 }
 
-export default Header
+const mapDispatchToProps = dispatch =>({
+    goToSendVideo: () => dispatch(push(routes.sendVideo)),
+    goToLoginPage: () => dispatch(push(routes.loginPage))
+})
+
+export default connect(
+    null,
+    mapDispatchToProps
+)(Header);

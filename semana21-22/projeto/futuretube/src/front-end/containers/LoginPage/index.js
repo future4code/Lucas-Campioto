@@ -2,6 +2,9 @@ import React from 'react';
 import { push } from "connected-react-router";
 import { routes } from "../Router/index";
 import { connect } from "react-redux";
+import * as firebase from "firebase/app";
+import "firebase/auth"
+import "firebase/firestore"
 import styled from 'styled-components';
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
@@ -14,7 +17,7 @@ const ContainerLogin = styled.div`
     flex-direction: column;
     align-items:center;
     margin: auto;
-    background-color: #ccd9ff;
+    background-color: #e8c2ff;
     min-height: 100vh;
 `
 
@@ -22,9 +25,15 @@ const TextLoginPage = styled.h1`
     color:black;
 `
 
-const ContainerTextField = styled.div`
-   margin-bottom:15px;
-`
+const LoginWrapper = styled.form`
+    width: 100%;
+    gap: 10px;
+    place-content: center;
+    justify-items: center;
+    display: grid;
+`;
+
+
 
 const TextFiled = styled(TextField)`
     background-color:transparent;
@@ -93,12 +102,25 @@ export class LoginPage extends React.Component{
         })
     }
 
-    handleSubimit = event =>{
-
-    }
+    
+    onSubmitLogin = async (e) => {
+        e.preventDefault();
+        
+        try {
+          const userCredential = await firebase.auth()
+          .signInWithEmailAndPassword(this.state.email, this.state.password)
+         const user = userCredential.user;
+         console.log(user.uid) 
+          
+        } catch (e) {
+          console.log(e.message);
+          window.alert("Usuário inválido")
+        }
+        
+      };
 
     render(){
-        const { goToSignUpPage } = this.props
+       
         return(
         
                 <ContainerLogin>
@@ -109,38 +131,41 @@ export class LoginPage extends React.Component{
                     <ContainerIllustration>
                         <ImageIllustration src={Passaro} />
                     </ContainerIllustration>
-                    
-                    <TextLoginPage>
-                        Login
-                    </TextLoginPage>
-                        <ContainerTextField>
-                            <TextField 
-                                onChange={this.handleChange}
-                                color="primary-light"
-                                name="email"
-                                type="email"
-                                label="E-mail"
-                                required
-                                variant="outlined" />
-                        </ContainerTextField>
-                        
-                        <ContainerTextField>
-                            <TextField 
-                                onChange={this.handleChange}
-                                name="password"
-                                type="password"
-                                label="Password"
-                                required
-                                variant="outlined" />
-                        </ContainerTextField>
+
                    
-                        
-                        <div class="container">
-                            <a class="btn btn-2">Logar</a>
-                        </div>
-                        <span >Não possui Cadastro?</span>
-                        <SignUpButon onClick={goToSignUpPage}>Clique aqui</SignUpButon>  
+                        <TextLoginPage>
+                            Login
+                        </TextLoginPage>
+                        <LoginWrapper>
+                            
+                                <TextField 
+                                    onChange={this.handleChange}
+                                    color="primary-light"
+                                    name="email"
+                                    type="email"
+                                    label="E-mail"
+                                    required
+                                    variant="outlined" />
+                          
+                            
+                            
+                                <TextField 
+                                    onChange={this.handleChange}
+                                    name="password"
+                                    type="password"
+                                    label="Password"
+                                    required
+                                    variant="outlined" />
+                            
                     
+                            
+                            <div  class="container">
+                                <a onClick={this.onSubmitLogin} class="btn btn-2">Logar</a>
+                            </div>
+                           
+                            <span >Não possui Cadastro?</span>
+                            <SignUpButon onClick={this.props.goToSignUpPage}>Clique aqui</SignUpButon>  
+                    </LoginWrapper>
                     
                 </ContainerLogin>
             
@@ -151,6 +176,7 @@ export class LoginPage extends React.Component{
 
 const mapDispatchToProps = dispatch => ({
     goToSignUpPage: () => dispatch(push(routes.signUpPage)),
+    goToFeedPage : () => dispatch(push(routes.feed))
 })
 
 export default connect(

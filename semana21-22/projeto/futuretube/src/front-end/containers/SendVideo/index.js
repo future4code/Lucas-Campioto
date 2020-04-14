@@ -2,6 +2,10 @@ import React from 'react';
 import { push } from "connected-react-router";
 import { routes } from "../Router/index";
 import { connect } from "react-redux";
+import axios from 'axios';
+import * as firebase from "firebase/app";
+import "firebase/auth"
+import "firebase/firestore"
 import styled from 'styled-components';
 import TextField from "@material-ui/core/TextField";
 import '../../style/index.css'
@@ -67,8 +71,42 @@ export class SendVideo extends React.Component {
         super(props)
 
         this.state = {
-
+            id:"",  
+            title:"",
+            description:"",
+            url:""
         }
+    }
+
+    handleChange = event => {
+        this.setState({
+            [event.target.name]: event.target.value
+        })
+    }
+
+    
+   
+    onSubmitSendVideo = async(e) =>{
+        e.preventDefault();
+        try{
+            const videos = {
+                title: this.state.title,
+                description: this.state.description,
+                url: this.state.url
+            };
+
+            
+            const token = await firebase.auth().currentUser.getIdToken();
+            await axios.post('https://us-central1-futuretube-projeto.cloudfunctions.net/futureTube/sendVideos', videos,{
+                headers: {
+                    auth: token
+                 }
+            })
+        }catch(e){
+            console.log(e.message)
+        }
+        
+        
     }
 
     render(){
@@ -93,7 +131,7 @@ export class SendVideo extends React.Component {
                 </SignupWrapper>
 
                 <div class="container">
-                    <a onClick={this.goToLoginPage} class="btn btn-2" type="submit">Enviar video</a>
+                    <a onClick={this.onSubmitSendVideo} class="btn btn-2" type="submit">Enviar video</a>
                 </div>
             </ContainerSendVideo>
 
@@ -101,3 +139,5 @@ export class SendVideo extends React.Component {
         )
     }
 }
+
+

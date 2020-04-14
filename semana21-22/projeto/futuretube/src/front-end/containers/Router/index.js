@@ -1,10 +1,10 @@
 import React from "react";
 import { ConnectedRouter } from "connected-react-router";
 import { Switch, Route } from "react-router-dom";
-import {LoginPage} from "../LoginPage/index";
-import{SignUp} from "../SignUpPage/index"
-import { FeedPage } from "../FeedPage";
-import { SendVideo } from "../SendVideo";
+import LoginPage from "../LoginPage/index";
+import SignUp from "../SignUpPage/index"
+import {FeedPage} from "../FeedPage";
+import {SendVideo} from "../SendVideo";
 
 
 export const routes = {

@@ -1,24 +1,22 @@
 import React from 'react';
+import * as firebase from "firebase/app";
+import "firebase/firestore"
+import { push } from "connected-react-router";
+import { routes } from "../../containers/Router/index";
+import { connect } from "react-redux";
+import axios from 'axios'
 import styled from 'styled-components';
 import ReactPlayer from 'react-player';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 
 
-const ContainerCardVideo = styled.div`
-    display:grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-row-gap:15px;
-    justify-items: center;
-    margin-top: 20px;
-    margin-bottom:20px;
-    
-`
+
 
 const ContainerVideo = styled.div`
     width: 30vw;
     height:60vh;
-    background-color: #d3dbf0;
+    background-color: #fff;
     -webkit-box-shadow: 6px 6px 10px #999; 
 	-moz-box-shadow: 6px 6px 10px #999;
      box-shadow: 6px 6px 10px #999;
@@ -55,63 +53,49 @@ const DeleteVideoIcon =  styled.span`
  cursor:pointer;
 `
 
-function CardVideo(props){
-    return(
-        <ContainerCardVideo>
+export class CardVideo extends React.Component{
+    constructor(props){
+        super(props)
+    }
+
+    deleteVideo = async(e) =>{
+        e.preventDefault();
+        try{            
+            const videoId = await firebase.firestore().collection("sendVideo").doc().get().then(doc => doc.id);
+            await axios.delete(`https://us-central1-futuretube-projeto.cloudfunctions.net/futureTube/deleteVideo/?videoId=${videoId}`)
+        }catch(e){
+            console.log(e.message)
+        }  
+    }
+
+    // getIdVideo = async(e) => {
+    //     const videoId = await firebase.firestore().collection("sendVideo").doc().get().then(doc => doc);
+    //     console.log('teste id', videoId)
+    // }
+
+  
+
+    render(){
+        return(
+            
                 <ContainerVideo>
                     <ReactPlayer 
-                    url='https://www.youtube.com/watch?v=ysz5S6PUM-U' 
+                    url={this.props.url} 
                     width='30vw'
                     height='40vh'
                     />
                     <ContainerInformationVideo>
-                        <TitleVideo>Sidoka - Noite fria</TitleVideo>
-                        <DescriptionVideo>Video do sidoka</DescriptionVideo>
-                        <EditVideoIcon> <EditIcon />  </EditVideoIcon>
-                        <DeleteVideoIcon> <DeleteIcon /> </DeleteVideoIcon>
+                        <TitleVideo>{this.props.title}</TitleVideo>
+                        <DescriptionVideo>{this.props.description}</DescriptionVideo>
+                        <EditVideoIcon > <EditIcon />  </EditVideoIcon>
+                        <DeleteVideoIcon> <DeleteIcon onClick={this.deleteVideo} /> </DeleteVideoIcon>
                     </ContainerInformationVideo>
                 </ContainerVideo>
-                <ContainerVideo>
-                    <ReactPlayer 
-                    url='https://www.youtube.com/watch?v=ysz5S6PUM-U' 
-                    width='30vw'
-                    height='40vh'
-                    />
-                    <ContainerInformationVideo>
-                        <TitleVideo>Sidoka - Noite fria</TitleVideo>
-                        <DescriptionVideo>Video do sidoka</DescriptionVideo>
-                        <EditVideoIcon> <EditIcon />  </EditVideoIcon>
-                        <DeleteVideoIcon> <DeleteIcon /> </DeleteVideoIcon>
-                    </ContainerInformationVideo>
-                </ContainerVideo>
-                <ContainerVideo>
-                    <ReactPlayer 
-                    url='https://www.youtube.com/watch?v=ysz5S6PUM-U' 
-                    width='30vw'
-                    height='40vh'
-                    />
-                    <ContainerInformationVideo>
-                        <TitleVideo>Sidoka - Noite fria</TitleVideo>
-                        <DescriptionVideo>Video do sidoka</DescriptionVideo>
-                        <EditVideoIcon> <EditIcon />  </EditVideoIcon>
-                        <DeleteVideoIcon> <DeleteIcon /> </DeleteVideoIcon>
-                    </ContainerInformationVideo>
-                </ContainerVideo>
-                <ContainerVideo>
-                    <ReactPlayer 
-                    url='https://www.youtube.com/watch?v=ysz5S6PUM-U' 
-                    width='30vw'
-                    height='40vh'
-                    />
-                    <ContainerInformationVideo>
-                        <TitleVideo>Sidoka - Noite fria</TitleVideo>
-                        <DescriptionVideo>Video do sidoka</DescriptionVideo>
-                        <EditVideoIcon> <EditIcon />  </EditVideoIcon>
-                        <DeleteVideoIcon> <DeleteIcon /> </DeleteVideoIcon>
-                    </ContainerInformationVideo>
-                </ContainerVideo>
-        </ContainerCardVideo>
-    )
+          
+                 
+        )
+    }
+
 }
 
-export default CardVideo
+export default CardVideo;
