@@ -5,6 +5,7 @@ import axios from 'axios'
 import { push } from "connected-react-router";
 import { routes } from "../Router/index";
 import { connect } from "react-redux";
+import { getVideos } from '../../actions/videos'
 import styled from 'styled-components';
 import Header from "../../components/Header";
 import CardVideo from "../../components/CardVideo"
@@ -29,11 +30,11 @@ export class FeedPage extends React.Component{
     }
 
     componentDidMount(){
-        this.getVideos();
+       this.props.getVideos()
     }
 
     getVideos = async() =>{
-        firebase.firestore().collection('sendVideo').onSnapshot(querySnapshot => {
+            firebase.firestore().collection('sendVideo').onSnapshot(querySnapshot => {
             const videos = querySnapshot.docs.map(doc => doc.data());
             this.setState({ videos: videos})
         })
@@ -42,20 +43,35 @@ export class FeedPage extends React.Component{
     
 
     render(){
+       console.log('teste: ', this.props.getToVideos)
         return(
+             
             <div>
                 <Header></Header>
                 <ContainerCardVideo>
-                    {this.state.videos.map(video =>(
+                    {this.props.getToVideos.map((video) =>(
                         <CardVideo
                             url={video.url}
                             title={video.title}
                             description={video.description}
                             />
                     ))}
+
                 </ContainerCardVideo>
                 
             </div>
         )
     }
 }
+
+const mapStateToProps = (state) => ({
+    getToVideos: state.videos.allVideos
+})
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        getVideos: () => dispatch(getVideos()), 
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(FeedPage);

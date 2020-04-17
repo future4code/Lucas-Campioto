@@ -61,19 +61,12 @@ export class CardVideo extends React.Component{
     deleteVideo = async(e) =>{
         e.preventDefault();
         try{            
-            const videoId = await firebase.firestore().collection("sendVideo").doc().get().then(doc => doc.id);
-            await axios.delete(`https://us-central1-futuretube-projeto.cloudfunctions.net/futureTube/deleteVideo/?videoId=${videoId}`)
+            const idVideo = await firebase.firestore().collection("sendVideo").doc().get().then(doc => doc.id);
+            await axios.delete(`https://us-central1-futuretube-projeto.cloudfunctions.net/futureTube/deleteVideo/${idVideo}`)
         }catch(e){
-            console.log(e.message)
+            console.log(e.message)  
         }  
     }
-
-    // getIdVideo = async(e) => {
-    //     const videoId = await firebase.firestore().collection("sendVideo").doc().get().then(doc => doc);
-    //     console.log('teste id', videoId)
-    // }
-
-  
 
     render(){
         return(
@@ -87,7 +80,7 @@ export class CardVideo extends React.Component{
                     <ContainerInformationVideo>
                         <TitleVideo>{this.props.title}</TitleVideo>
                         <DescriptionVideo>{this.props.description}</DescriptionVideo>
-                        <EditVideoIcon > <EditIcon />  </EditVideoIcon>
+                        <EditVideoIcon onClick={this.props.goToEditVideoPage}> <EditIcon />  </EditVideoIcon>
                         <DeleteVideoIcon> <DeleteIcon onClick={this.deleteVideo} /> </DeleteVideoIcon>
                     </ContainerInformationVideo>
                 </ContainerVideo>
@@ -98,4 +91,11 @@ export class CardVideo extends React.Component{
 
 }
 
-export default CardVideo;
+const mapDispatchToProps = dispatch => ({
+    goToEditVideoPage: () => dispatch(push(routes.editVideo)),
+})
+
+export default connect(
+    null,
+    mapDispatchToProps
+)(CardVideo);

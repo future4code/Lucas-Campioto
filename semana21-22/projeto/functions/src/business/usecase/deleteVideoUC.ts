@@ -6,10 +6,10 @@ export class DeleteVideoUC {
     ){}
 
     async execute(input: DeleteVideoInput){
-        await this.deleteVideGateway.deleteVideo(input.idVideo)
+        await this.deleteVideGateway.deleteVideo(input.videoId)
     }
 }
 
 export interface DeleteVideoInput{
-    idVideo: string,
+    videoId: string,
 }

@@ -54,6 +54,10 @@ const SignUpButon = styled.span`
     cursor:pointer;
     margin-top:8px;
 `
+const ChangePasswordButton = styled.span`
+    font-weight:bold;
+    cursor:pointer;
+`
 
 const ImageLogo = styled.img`
     width:350px;
@@ -73,7 +77,7 @@ const ContainerLogo = styled.div`
     
 `
 const ContainerIllustration = styled.div`
-    margin-bottom:-50px;
+    margin-bottom:-60px;
     margin-right:0px;
     background-color: #92e2fd;
 `
@@ -163,8 +167,9 @@ export class LoginPage extends React.Component{
                                 <a onClick={this.onSubmitLogin} class="btn btn-2">Logar</a>
                             </div>
                            
-                            <span >Não possui Cadastro?</span>
-                            <SignUpButon onClick={this.props.goToSignUpPage}>Clique aqui</SignUpButon>  
+                            <SignUpButon onClick={this.props.goToSignUpPage}>Não possui cadastro? Clique aqui</SignUpButon>
+                            <ChangePasswordButton onClick={this.props.goToChangePasswordPage}>Esqueceu a senha?</ChangePasswordButton>
+                             
                     </LoginWrapper>
                     
                 </ContainerLogin>
@@ -176,7 +181,8 @@ export class LoginPage extends React.Component{
 
 const mapDispatchToProps = dispatch => ({
     goToSignUpPage: () => dispatch(push(routes.signUpPage)),
-    goToFeedPage : () => dispatch(push(routes.feed))
+    goToFeedPage : () => dispatch(push(routes.feed)),
+    goToChangePasswordPage: () => dispatch(push(routes.changePassword))
 })
 
 export default connect(

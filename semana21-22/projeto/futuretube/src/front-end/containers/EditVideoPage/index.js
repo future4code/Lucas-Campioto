@@ -10,17 +10,8 @@ import styled from 'styled-components';
 import TextField from "@material-ui/core/TextField";
 import '../../style/index.css'
 import Header from "../../components/Header";
-import { sendVideos } from '../../actions/videos'
 
-const formSendVideo = [
-    {
-        name: 'url',
-        type: 'text',
-        label: 'URL ',
-        placeholder: 'URL do video',
-        required: true,
-        variant: "outlined",
-     },
+const CadastroForm = [
      {
         name: 'title',
         type: 'text',
@@ -67,13 +58,15 @@ const Title = styled.h1`
 `
 
 
-export class SendVideo extends React.Component {
+export class EditVideoPage extends React.Component {
     constructor(props){
-        super(props);
+        super(props)
 
         this.state = {
-          form:{}
-        };
+            id:"",  
+            title:"",
+            description:"",
+        }
     }
 
     handleChange = event => {
@@ -84,7 +77,7 @@ export class SendVideo extends React.Component {
 
     
    
-    onSubmitSendVideo = async(e) =>{
+    onSubmitEditVideo = async(e) =>{
         e.preventDefault();
         try{
             const videos = {
@@ -107,35 +100,20 @@ export class SendVideo extends React.Component {
         
     }
 
-    handleFieldChange = event => {
-        const { name, value } = event.target;
-        this.setState({ form: { ...this.state.form, [name]: value } });
-    };
-
-    sendNewVideo = (e) =>{   
-        e.preventDefault()
-        const { url, title, description} = this.state.form
-        this.props.sendVideos(url, title, description)  
-    }
-
-
-
     render(){
-        console.log("testando: ", this.state.form)
         return(
             <ContainerSendVideo>
                 <Header/>
 
                 <SignupWrapper>
-                    <Title>Envie seu video</Title>
-                    {formSendVideo.map(input => (
+                    <Title>Editar Video</Title>
+                    {CadastroForm.map(input => (
                         <TextFiled
-                            onChange={this.handleFieldChange}
+                            onChange={this.handleChange}
                             name={input.name}
                             type={input.type}
                             label={input.label}
                             required={input.required}
-                            value={this.state.form[input.name] || ""}
                             placeholder={input.placeholder}
                             pattern={input.pattern}
                             variant={input.variant}
@@ -144,7 +122,7 @@ export class SendVideo extends React.Component {
                 </SignupWrapper>
 
                 <div class="container">
-                    <a onClick={this.sendNewVideo} class="btn btn-2" type="submit">Enviar video</a>
+                    <a class="btn btn-2" type="submit">Enviar Alterações</a>
                 </div>
             </ContainerSendVideo>
 
@@ -152,15 +130,4 @@ export class SendVideo extends React.Component {
         )
     }
 }
-
-const mapStateToProps = (state) => ({
-  
-})
-
-const mapDispatchToProps = dispatch => ({    
-       sendVideos: () => dispatch(sendVideos()),    
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(SendVideo);
-
 

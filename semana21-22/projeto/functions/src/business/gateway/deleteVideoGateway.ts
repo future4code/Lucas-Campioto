@@ -1,3 +1,3 @@
 export interface DeleteVideoGateway {
-    deleteVideo(idVideo:string):Promise<void>
+    deleteVideo(videoId:string):Promise<void>
 }
