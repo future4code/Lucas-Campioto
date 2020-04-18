@@ -158,7 +158,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = dispatch => ({    
-       sendVideos: () => dispatch(sendVideos()),    
+       sendVideos: (url,title,description) => dispatch(sendVideos(url,title,description)),    
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SendVideo);

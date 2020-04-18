@@ -29,6 +29,7 @@ export const sendVideos = (url,title,description) => async (dispatch) => {
 
     try{
         await axios.post(`${baseURL}/sendVideos`, videoInformation)
+        dispatch(getVideos())
     }catch (err){
         window.alert("erro ao enviar videos")
     }

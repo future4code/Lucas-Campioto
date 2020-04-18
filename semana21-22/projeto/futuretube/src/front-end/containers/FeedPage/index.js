@@ -33,14 +33,7 @@ export class FeedPage extends React.Component{
        this.props.getVideos()
     }
 
-    getVideos = async() =>{
-            firebase.firestore().collection('sendVideo').onSnapshot(querySnapshot => {
-            const videos = querySnapshot.docs.map(doc => doc.data());
-            this.setState({ videos: videos})
-        })
-    }
 
-    
 
     render(){
        console.log('teste: ', this.props.getToVideos)
