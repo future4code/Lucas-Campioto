@@ -17,5 +17,5 @@ export interface GetPostFeedInput{
 }
 
 export interface GetPostFeedOutput{
-    posts:  FeedPost[]
+    posts: FeedPost[]
 }
