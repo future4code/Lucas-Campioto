@@ -141,6 +141,7 @@ export class SignUp extends React.Component{
             photo: this.state.photo
           })
           });
+          
 
         }catch(e) {
           console.log(e.message)
