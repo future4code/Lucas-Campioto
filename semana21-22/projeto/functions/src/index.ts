@@ -9,6 +9,8 @@ import { ChangeVideoDB } from './data/changeVideoDB';
 import { ChangeVideoUC, ChangeVideoInput } from './business/usecase/changeVideoUC'
 import { GetVideosDB } from './data/getVideosDB';
 import { GetVideosUC } from './business/usecase/getVideosUC';
+import { DeleteVideoDB } from './data/deleteVideoDB';
+import { DeleteVideoUC, DeleteVideoInput } from './business/usecase/deleteVideoUC';
 
 
 
@@ -40,13 +42,13 @@ app.post('/sendVideos', async(req:Request , res: Response) =>{
         
         const sendVideosDB = new SendVideoDB();
         const sendVideoUC =  new SendVideoUC(sendVideosDB);
-        
+        const videoId =  await admin.firestore().collection("sendVideo").doc().get().then(doc => doc.id);
         
         const input: SendVideoUCInput ={
             url: req.body.url,
             title: req.body.title,
             description: req.body.description,
-           
+            videoId,
         }
         
         await sendVideoUC.execute(input);
@@ -78,9 +80,12 @@ app.put('/changeVideos/:videoId', async(req:Request , res: Response) =>{
 
 app.delete('/deleteVideo/:videoId', async(req:Request, res:Response) => {
     try{ 
-        const document = admin.firestore().collection('sendVideo').doc(req.params.idVideo);
-        await document.delete() 
-        
+        const deleteVideoDB =  new DeleteVideoDB();
+        const deleteVideoUC = new DeleteVideoUC(deleteVideoDB);
+        const input : DeleteVideoInput = {
+            videoId: req.params.videoId
+        }
+        await deleteVideoUC.execute(input);
         res.status(200).send("deletado com sucesso")
     }catch(err){
         res.status(400).send(err.message)

@@ -72,7 +72,8 @@ export class SendVideo extends React.Component {
         super(props);
 
         this.state = {
-          form:{}
+          form:{},
+          videoId: "",
         };
     }
 
@@ -83,49 +84,27 @@ export class SendVideo extends React.Component {
     }
 
     
-   
-    onSubmitSendVideo = async(e) =>{
-        e.preventDefault();
-        try{
-            const videos = {
-                title: this.state.title,
-                description: this.state.description,
-                url: this.state.url
-            };
-
-            
-            const token = await firebase.auth().currentUser.getIdToken();
-            await axios.post('https://us-central1-futuretube-projeto.cloudfunctions.net/futureTube/sendVideos', videos,{
-                headers: {
-                    auth: token
-                 }
-            })
-        }catch(e){
-            console.log(e.message)
-        }
-        
-        
-    }
 
     handleFieldChange = event => {
         const { name, value } = event.target;
         this.setState({ form: { ...this.state.form, [name]: value } });
     };
 
-    sendNewVideo = (e) =>{   
+    sendNewVideo = async(e) =>{   
         e.preventDefault()
+        const idVideo = await firebase.firestore().collection("sendVideo").doc().get().then(doc => doc.id);
         const { url, title, description} = this.state.form
-        this.props.sendVideos(url, title, description)  
+        this.props.sendVideos(url, title, description, idVideo) 
+        window.alert("Video Enviado com sucesso")
+        this.setState({form: ""})
     }
 
 
 
     render(){
-        console.log("testando: ", this.state.form)
         return(
             <ContainerSendVideo>
                 <Header/>
-
                 <SignupWrapper>
                     <Title>Envie seu video</Title>
                     {formSendVideo.map(input => (
@@ -158,7 +137,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = dispatch => ({    
-       sendVideos: (url,title,description) => dispatch(sendVideos(url,title,description)),    
+       sendVideos: (url,title,description, idVideo) => dispatch(sendVideos(url,title,description,idVideo)),    
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SendVideo);

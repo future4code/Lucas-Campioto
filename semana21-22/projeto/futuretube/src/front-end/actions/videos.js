@@ -1,4 +1,6 @@
 import axios from 'axios';
+import * as firebase from "firebase/app";
+import "firebase/firestore"
 
 const baseURL = "https://us-central1-futuretube-projeto.cloudfunctions.net/futureTube"
 
@@ -8,6 +10,8 @@ export const setVideos = (allVideos) => ({
         allVideos,
     }
 })
+
+
 
 export const getVideos = () => async (dispatch) => {
     
@@ -32,5 +36,23 @@ export const sendVideos = (url,title,description) => async (dispatch) => {
         dispatch(getVideos())
     }catch (err){
         window.alert("erro ao enviar videos")
+    }
+}
+
+
+
+export const setRemoveVideo = (videoId) => ({
+    type:"REMOVE_VIDEO",
+    payload: {
+        videoId,
+    }
+})
+
+export const deleteVideo = (videoId) => async(dispatch) =>{
+    try{
+        await axios.delete(`${baseURL}/deleteVideo/${videoId}`)
+        dispatch(getVideos())
+    }catch(err){
+        window.alert("erro ao deletar o video")
     }
 }

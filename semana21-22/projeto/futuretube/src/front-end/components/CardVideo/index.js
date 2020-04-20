@@ -9,6 +9,7 @@ import styled from 'styled-components';
 import ReactPlayer from 'react-player';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
+import { deleteVideo } from "../../actions/videos";
 
 
 
@@ -58,14 +59,16 @@ export class CardVideo extends React.Component{
         super(props)
     }
 
-    deleteVideo = async(e) =>{
-        e.preventDefault();
-        try{            
-            const idVideo = await firebase.firestore().collection("sendVideo").doc().get().then(doc => doc.id);
-            await axios.delete(`https://us-central1-futuretube-projeto.cloudfunctions.net/futureTube/deleteVideo/${idVideo}`)
+
+
+    handleDeleteVideo = async (videoId) => {
+        try{
+            videoId = await firebase.firestore().collection("sendVideo").doc().get().then(doc => doc.id);
+            this.props.deleteVideo(videoId);
         }catch(e){
-            console.log(e.message)  
-        }  
+            console.log(e.message)
+        }
+        
     }
 
     render(){
@@ -81,7 +84,7 @@ export class CardVideo extends React.Component{
                         <TitleVideo>{this.props.title}</TitleVideo>
                         <DescriptionVideo>{this.props.description}</DescriptionVideo>
                         <EditVideoIcon onClick={this.props.goToEditVideoPage}> <EditIcon />  </EditVideoIcon>
-                        <DeleteVideoIcon> <DeleteIcon onClick={this.deleteVideo} /> </DeleteVideoIcon>
+                        <DeleteVideoIcon> <DeleteIcon onClick={this.handleDeleteVideo} /> </DeleteVideoIcon>
                     </ContainerInformationVideo>
                 </ContainerVideo>
           
@@ -91,11 +94,16 @@ export class CardVideo extends React.Component{
 
 }
 
+const mapStateToProps = (state) => ({
+    getToVideos: state.videos.allVideos
+})
+
 const mapDispatchToProps = dispatch => ({
     goToEditVideoPage: () => dispatch(push(routes.editVideo)),
+    deleteVideo: (videoId) => dispatch(deleteVideo(videoId)),
 })
 
 export default connect(
-    null,
+    mapStateToProps,
     mapDispatchToProps
 )(CardVideo);

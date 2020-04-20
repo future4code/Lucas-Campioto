@@ -8,7 +8,9 @@ const videosReducer = (state = initialState, action) => {
             const videoList = action.payload.allVideos;
             return {...state, allVideos: videoList}   
 
-            
+        case "REMOVE_VIDEO":
+             return state;
+
             default:
             return state;
     }
