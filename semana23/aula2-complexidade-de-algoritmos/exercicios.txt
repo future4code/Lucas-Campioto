@@ -1,0 +1,19 @@
+Exercício 1
+
+RESPOSTA: O(n)
+
+Exercício 2 
+
+RESPOSTA: O(n)
+
+Exercício 3 
+
+RESPOSTA: O(1)
+
+Exercício 4 
+
+RESPOSTA: O(n²)
+
+Exercício 5 
+
+RESPOSTA: O(1) , O(n),  O(n²)
