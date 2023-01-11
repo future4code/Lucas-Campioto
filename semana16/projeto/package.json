@@ -13,7 +13,7 @@
     "@types/node": "^13.7.4",
     "express": "^4.17.1",
     "heroku": "^7.39.0",
-    "knex": "^0.20.11",
+    "knex": "^2.4.0",
     "mysql": "^2.18.1"
   },
   "devDependencies": {
